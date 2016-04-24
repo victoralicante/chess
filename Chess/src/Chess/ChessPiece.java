@@ -3,11 +3,11 @@ package Chess;
 public interface ChessPiece {
     
     enum Color {
-        BLACK, WHITE
+        BLACK, WHITE, NULL
     }
 	
     enum Type {
-            KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN
+            KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN, NULL
     }
 
 	/**

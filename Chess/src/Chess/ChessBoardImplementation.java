@@ -140,6 +140,7 @@ public class ChessBoardImplementation implements ChessBoard {
 	}
 
 	@Override
+        @SuppressWarnings("empty-statement")
 	public boolean loadFromFile(File location) {
             
             File archivo;
@@ -147,16 +148,29 @@ public class ChessBoardImplementation implements ChessBoard {
             BufferedReader br;
 
             try {
-               archivo = new File ("C:\\saveChessGame.txt");
+               archivo = location;
                fr = new FileReader (archivo);
                br = new BufferedReader(fr);
 
+               for(int row=0;row<8;row++) {
+                    for(int column=0;column<8;column++) {
+                        pieces[getPieceIndex(row, column)] = null;
+                   }   
+               }
+               
                // Lectura del fichero
                String linea;
-               while((linea=br.readLine())!=null)
-                  System.out.println(linea);
+               while((linea=br.readLine())!=null) {
+                   String[] campos = linea.split(",");
+                   int row,column;
+                   row = Integer.parseInt(campos[2]);
+                   column = Integer.parseInt(campos[3]);
+                   ChessPiece.Color col = ChessPiece.Color.valueOf(campos[0]);
+                   ChessPiece.Type tip = ChessPiece.Type.valueOf(campos[1]);
+                   pieces[getPieceIndex(row, column)] = new ChessPieceImplementation(col,tip);
+               }
             }
-            catch(Exception e){
+            catch(IOException | NumberFormatException e){
                 return false;
             }finally{
                try{                    

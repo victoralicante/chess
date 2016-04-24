@@ -60,12 +60,12 @@ public interface ChessBoard {
 	 * @param location Path of the file to be saved.
 	 * @return true if successfull, false otherwise.
 	 */
-	boolean saveToFile(File location);
+    boolean saveToFile(File location);
 
 	/**
 	 * Esta función abre la partida que hay en un archivo
 	 * @param location Path of the file to be loaded.
 	 * @return true if successfull, false otherwise.
 	 */
-	boolean loadFromFile(File location);
+    boolean loadFromFile(File location);
 }
