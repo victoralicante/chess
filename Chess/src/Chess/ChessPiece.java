@@ -1,5 +1,4 @@
 package Chess;
-//Test
 
 public interface ChessPiece {
     
